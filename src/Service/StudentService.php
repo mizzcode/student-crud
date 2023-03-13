@@ -3,8 +3,8 @@
 namespace Mizz\StudentCrud\Service;
 
 use Exception;
-use Model\Students;
-use Repository\StudentRepository;
+use Mizz\Student\Crud\Model\Students;
+use Mizz\StudentCrud\Repository\StudentRepository;
 
 class StudentService
 {

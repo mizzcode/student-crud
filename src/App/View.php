@@ -1,3 +1,11 @@
 <?php
 
-namespace Mizz\Student\Crud\App;
+namespace Mizz\StudentCrud\App;
+
+class View
+{
+    public static function render(string $view, array $model)
+    {
+        require __DIR__ . "/../View/" . $view . ".php";
+    }
+}

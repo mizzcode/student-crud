@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Mizz\Student\Crud\Config;
+namespace Mizz\StudentCrud\Config;
 
 use PDO;
 

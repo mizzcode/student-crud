@@ -2,7 +2,7 @@
 
 namespace Mizz\StudentCrud\Repository;
 
-use Model\Students as Student;
+use Mizz\Student\Crud\Model\Students;
 use PDO;
 
 class StudentRepository
@@ -14,7 +14,7 @@ class StudentRepository
         $this->connection = $connection;
     }
 
-    public function save(Student $student)
+    public function save(Students $student)
     {
         $sql = "INSERT INTO students (nim, nama, jurusan) VALUES (?, ?, ?)";
         $stmt = $this->connection->prepare($sql);
@@ -31,7 +31,7 @@ class StudentRepository
         }
     }
 
-    public function updateById(Student $student)
+    public function updateById(Students $student)
     {
         $sql = "UPDATE students SET nim = ?, nama = ?, jurusan = ? WHERE id = ?";
         $stmt = $this->connection->prepare($sql);
@@ -63,5 +63,12 @@ class StudentRepository
             header("Location: /");
             exit;
         }
+    }
+
+    public function findAll()
+    {
+        $sql = "SELECT * FROM students";
+        $stmt = $this->connection->query($sql);
+        return $stmt;
     }
 }
