@@ -60,7 +60,7 @@ class StudentRepository
         $sql = "SELECT * FROM students";
         $stmt = $this->connection->query($sql);
 
-        $student = [];
+        $students = [];
 
         while ($row = $stmt->fetch()) {
             $student = [
@@ -70,9 +70,9 @@ class StudentRepository
                 "jurusan" => $row['jurusan'],
             ];
 
-            $student[] = $student;
-
-            return $student;
+            $students[] = $student;
         }
+
+        return $students;
     }
 }
