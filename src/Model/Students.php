@@ -1,6 +1,6 @@
 <?php
 
-namespace Mizz\Student\Crud\Model;
+namespace Mizz\StudentCrud\Model;
 
 class Students
 {

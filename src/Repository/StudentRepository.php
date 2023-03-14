@@ -2,7 +2,7 @@
 
 namespace Mizz\StudentCrud\Repository;
 
-use Mizz\Student\Crud\Model\Students;
+use Mizz\StudentCrud\Model\Students;
 use PDO;
 
 class StudentRepository
@@ -19,16 +19,6 @@ class StudentRepository
         $sql = "INSERT INTO students (nim, nama, jurusan) VALUES (?, ?, ?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$student->nim, $student->nama, $student->jurusan]);
-
-        if ($stmt) {
-            $_SESSION['message'] = 'Add Student Succesfully';
-            header("Location: /");
-            exit;
-        } else {
-            $_SESSION['message'] = 'Add Student Failed';
-            header("Location: /");
-            exit;
-        }
     }
 
     public function updateById(Students $student)
@@ -69,6 +59,20 @@ class StudentRepository
     {
         $sql = "SELECT * FROM students";
         $stmt = $this->connection->query($sql);
-        return $stmt;
+
+        $student = [];
+
+        while ($row = $stmt->fetch()) {
+            $student = [
+                "id" => $row['id'],
+                "nim" => $row['nim'],
+                "nama" => $row['nama'],
+                "jurusan" => $row['jurusan'],
+            ];
+
+            $student[] = $student;
+
+            return $student;
+        }
     }
 }

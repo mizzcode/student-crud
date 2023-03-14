@@ -9,5 +9,6 @@ use Mizz\StudentCrud\Controller\StudentController;
 Database::getConnection();
 
 Router::add("GET", "/", StudentController::class, "index");
+Router::add("POST", "/", StudentController::class, "postStudent");
 
 Router::run();

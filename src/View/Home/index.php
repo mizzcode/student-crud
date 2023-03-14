@@ -18,7 +18,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="Service/StudentService.php" method="post">
+                    <form action="/" method="post">
                         <div class="mb-3">
                             <label>Nim</label>
                             <input type="number" name="nim" class="form-control">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Jurusan</label>
-                            <input type="number" name="jurusan" class="form-control">
+                            <input type="text" name="jurusan" class="form-control">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -81,6 +81,15 @@
     </div>
 
     <div class="container mt-4">
+        <?php
+
+        if (isset($model['error'])) { ?>
+
+            <div class="alert alert-danger" role="alert">
+                <?= $model['error'] ?>
+            </div>
+
+        <?php } ?>
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -101,13 +110,13 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>1231</td>
-                                    <td>Jhon</td>
-                                    <td>Ti</td>
+                                    <td> <?= $model['student']['id'] ?> </td>
+                                    <td> <?= $model['student']['nim'] ?> </td>
+                                    <td> <?= $model['student']['nama'] ?> </td>
+                                    <td> <?= $model['student']['jurusan'] ?> </td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">Edit</button>
+                                        <a href="#" class="btn btn-primary">Edit</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>
