@@ -23,23 +23,12 @@ class StudentController
     public function index()
     {
 
-        $student = $this->studentService->getFindAll();
-
-        var_dump($student);
-        die;
-
-
+        $students = $this->studentService->getFindAll();
 
         View::render(
-            "Home/index",
-            [
+            "Home/index", [
                 "title" => "Student CRUD",
-                "student" => [
-                    "id" => $student['id'],
-                    "nim" => $student['nim'],
-                    "nama" => $student['nama'],
-                    "jurusan" => $student['jurusan'],
-                ]
+                "students" => $students
             ]
         );
     }
