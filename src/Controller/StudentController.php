@@ -26,7 +26,8 @@ class StudentController
         $students = $this->studentService->getFindAll();
 
         View::render(
-            "Home/index", [
+            "Home/index",
+            [
                 "title" => "Student CRUD",
                 "students" => $students
             ]
@@ -35,7 +36,8 @@ class StudentController
 
     public function postStudent()
     {
-        if (isset($_SERVER['REQUEST_METHOD']) == "POST") {
+        if (isset($_POST['save_student'])) {
+
             $student = new Students;
             $student->nim = $_POST['nim'];
             $student->nama = $_POST['nama'];

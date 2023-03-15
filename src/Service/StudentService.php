@@ -20,7 +20,7 @@ class StudentService
 
     public function addStudent(Students $request)
     {
-        $this->validate($request);
+        // $this->validate($request);
 
         try {
             Database::beginTransaction();
@@ -44,15 +44,15 @@ class StudentService
         return $this->studentRepository->findAll();
     }
 
-    private function validate(object $request)
-    {
-        $reflection = new ReflectionClass($request);
-        $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
+    // private function validate(object $request)
+    // {
+    //     $reflection = new ReflectionClass($request);
+    //     $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
 
-        foreach ($properties as $property) {
-            if (trim($property->getValue($request)) == '') {
-                throw new Exception("Kolom $property->name tidak boleh kosong");
-            }
-        }
-    }
+    //     foreach ($properties as $property) {
+    //         if (trim($property->getValue($request)) == '') {
+    //             throw new Exception("Kolom $property->name tidak boleh kosong");
+    //         }
+    //     }
+    // }
 }

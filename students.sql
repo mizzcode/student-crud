@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 15, 2023 at 02:02 PM
+-- Generation Time: Mar 15, 2023 at 09:11 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.3
 
@@ -36,6 +36,15 @@ CREATE TABLE `students` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `nim`, `nama`, `jurusan`, `created_at`) VALUES
+(1, 123123, 'Mizz', 'Ti', '2023-03-15 13:56:24'),
+(2, 12939, 'Jani', 'Ekonomi', '2023-03-15 13:56:44'),
+(3, 1293912, 'Ferdi', 'Perikanan', '2023-03-15 14:00:59');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -53,7 +62,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
