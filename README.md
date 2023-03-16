@@ -21,8 +21,9 @@ adalah sebuah web untuk management student di kampus
 ## Installation
 - Laragon : https://laragon.org/download/
 - phpMyAdmin : https://www.phpmyadmin.net/downloads/
+- Git : https://git-scm.com/downloads
 
-untuk menjalankan aplikasi form karyawan bisa clone repository agar mendapatkan source code
+untuk menjalankan web student management bisa clone repository agar mendapatkan source code
 ```sh
 git clone https://github.com/mizzcode/student-crud
 ```
