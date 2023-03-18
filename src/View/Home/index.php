@@ -36,9 +36,9 @@
 
     if (isset($model['error']) || isset($model['notice'])) { ?>
 
-    <div class="alert alert-danger" role="alert">
-        <?= $model['error'] ?? $model['notice'] ?>
-    </div>
+        <div class="alert alert-danger" role="alert">
+            <?= $model['error'] ?? $model['notice'] ?>
+        </div>
 
     <?php } ?>
     <div class="row">
@@ -62,19 +62,18 @@
                         </thead>
                         <tbody>
                             <?php foreach ($model['students'] as $student) { ?>
-                            <tr>
-                                <td> <?= $student['id'] ?> </td>
-                                <td> <?= $student['nim'] ?> </td>
-                                <td> <?= $student['nama'] ?> </td>
-                                <td> <?= $student['jurusan'] ?> </td>
-                                <td>
-                                    <a href="/student/edit/<?= $student['id'] ?>" class="btn btn-primary">Edit</a>
-                                    <form action="/student/delete" method="post" class="d-inline">
-                                        <button type="submit" name="delete_student" value="<?= $student['id'] ?>"
-                                            class="btn btn-danger btn-md">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td> <?= $student['id'] ?> </td>
+                                    <td> <?= $student['nim'] ?> </td>
+                                    <td> <?= $student['nama'] ?> </td>
+                                    <td> <?= $student['jurusan'] ?> </td>
+                                    <td>
+                                        <a href="/student/edit/<?= $student['id'] ?>" class="btn btn-primary">Edit</a>
+                                        <form action="/" method="post" class="d-inline">
+                                            <button type="submit" name="delete_student" value="<?= $student['id'] ?>" class="btn btn-danger btn-md">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>

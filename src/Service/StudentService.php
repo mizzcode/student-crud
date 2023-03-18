@@ -60,6 +60,15 @@ class StudentService
         }
     }
 
+    public function deleteStudentById($id)
+    {
+        try {
+            $this->studentRepository->deleteById($id);
+        } catch (Exception $error) {
+            throw $error;
+        }
+    }
+
 
     public function getStudentById($id)
     {

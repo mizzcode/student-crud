@@ -56,6 +56,23 @@ class StudentController
                 );
             }
         }
+        // jika bukan add student maka hapus student nya
+        if (isset($_POST['delete_student'])) {
+            $id = $_POST['delete_student'];
+
+            try {
+                $this->studentService->deleteStudentById($id);
+                View::redirect('/');
+            } catch (Exception $error) {
+                View::render(
+                    "Home/index",
+                    [
+                        'title' => "Student CRUD",
+                        'error' => $error->getMessage()
+                    ]
+                );
+            }
+        }
     }
 
     // view edit student
