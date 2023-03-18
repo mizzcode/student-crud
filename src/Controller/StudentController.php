@@ -23,7 +23,7 @@ class StudentController
     public function index()
     {
 
-        $students = $this->studentService->getFindAll();
+        $students = $this->studentService->getStudentAll();
 
         View::render(
             "Home/index",
@@ -34,7 +34,7 @@ class StudentController
         );
     }
 
-    public function postStudent()
+    public function postSaveStudent()
     {
         if (isset($_POST['save_student'])) {
 
@@ -45,6 +45,43 @@ class StudentController
 
             try {
                 $this->studentService->addStudent($student);
+                View::redirect("/");
+            } catch (Exception $error) {
+                View::render(
+                    "Home/index",
+                    [
+                        'title' => "Student CRUD",
+                        'error' => $error->getMessage()
+                    ]
+                );
+            }
+        }
+    }
+
+    // view edit student
+    public function editStudent($id)
+    {
+        $student = $this->studentService->getStudentById($id);
+
+        View::render("Home/edit_student", [
+            "title" => "Edit Student",
+            "student" => $student
+        ]);
+    }
+
+    public function postEditStudent($id)
+    {
+        // jika button edit student di tekan
+        if (isset($_POST['edit_student'])) {
+            // buat object students dan isi value dari form method post
+            $request = new Students;
+            $request->id = $id;
+            $request->nim = $_POST['nim'];
+            $request->nama = $_POST['nama'];
+            $request->jurusan = $_POST['jurusan'];
+
+            try {
+                $this->studentService->editStudent($request);
                 View::redirect("/");
             } catch (Exception $error) {
                 View::render(

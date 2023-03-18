@@ -39,7 +39,35 @@ class StudentService
         }
     }
 
-    public function getFindAll()
+    public function editStudent(Students $request)
+    {
+        try {
+            Database::beginTransaction();
+
+            $student = $this->studentRepository->findById($request->id);
+
+            $student->id = $request->id;
+            $student->nim = $request->nim;
+            $student->nama = $request->nama;
+            $student->jurusan = $request->jurusan;
+
+            $this->studentRepository->updateById($student);
+
+            Database::commitTransaction();
+        } catch (Exception $error) {
+            Database::rollbackTransaction();
+            throw $error;
+        }
+    }
+
+
+    public function getStudentById($id)
+    {
+        return $this->studentRepository->findById($id);
+    }
+
+
+    public function getStudentAll()
     {
         return $this->studentRepository->findAll();
     }

@@ -9,6 +9,10 @@ use Mizz\StudentCrud\Controller\StudentController;
 Database::getConnection();
 
 Router::add("GET", "/", StudentController::class, "index");
-Router::add("POST", "/", StudentController::class, "postStudent");
+Router::add("POST", "/", StudentController::class, "postSaveStudent");
+
+Router::add("GET", "/student/edit/([0-9]*)", StudentController::class, "editStudent");
+Router::add("POST", "/student/edit/([0-9]*)", StudentController::class, "postEditStudent");
+
 
 Router::run();

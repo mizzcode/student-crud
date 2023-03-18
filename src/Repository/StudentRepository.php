@@ -26,16 +26,6 @@ class StudentRepository
         $sql = "UPDATE students SET nim = ?, nama = ?, jurusan = ? WHERE id = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$student->nim, $student->nama, $student->jurusan, $student->id]);
-
-        if ($stmt) {
-            $_SESSION['message'] = 'Update Student Succesfully';
-            header("Location: /");
-            exit;
-        } else {
-            $_SESSION['message'] = 'Update Student Failed';
-            header("Location: /");
-            exit;
-        }
     }
 
     public function deleteById($id)
@@ -43,19 +33,31 @@ class StudentRepository
         $sql = "DELETE FROM students WHERE id = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
+    }
 
-        if ($stmt) {
-            $_SESSION['message'] = 'Delete Student Succesfully';
-            header("Location: /");
-            exit;
-        } else {
-            $_SESSION['message'] = 'Delete Student Failed';
-            header("Location: /");
-            exit;
+    public function findById($id): ?Students
+    {
+        $sql = "SELECT * FROM students WHERE id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+
+        try {
+            if ($row = $stmt->fetch()) {
+                $student = new Students;
+                $student->id = $row['id'];
+                $student->nim = $row['nim'];
+                $student->nama = $row['nama'];
+                $student->jurusan = $row['jurusan'];
+                return $student;
+            } else {
+                return null;
+            }
+        } finally {
+            $stmt->closeCursor();
         }
     }
 
-    public function findAll()
+    public function findAll(): array
     {
         $sql = "SELECT * FROM students";
         $stmt = $this->connection->query($sql);
