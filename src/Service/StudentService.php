@@ -6,8 +6,6 @@ use Exception;
 use Mizz\StudentCrud\Model\Students;
 use Mizz\StudentCrud\Config\Database;
 use Mizz\StudentCrud\Repository\StudentRepository;
-use ReflectionClass;
-use ReflectionProperty;
 
 class StudentService
 {
@@ -69,7 +67,6 @@ class StudentService
         }
     }
 
-
     public function getStudentById($id)
     {
         return $this->studentRepository->findById($id);
@@ -80,16 +77,4 @@ class StudentService
     {
         return $this->studentRepository->findAll();
     }
-
-    // private function validate(object $request)
-    // {
-    //     $reflection = new ReflectionClass($request);
-    //     $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
-
-    //     foreach ($properties as $property) {
-    //         if (trim($property->getValue($request)) == '') {
-    //             throw new Exception("Kolom $property->name tidak boleh kosong");
-    //         }
-    //     }
-    // }
 }
